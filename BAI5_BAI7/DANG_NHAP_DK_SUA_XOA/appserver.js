@@ -43,7 +43,6 @@ handlers.login = function (req, res) {
                 fs.writeFile('./data/users.json', users, err => {
                     console.log(err)
                 });
-
                 res.writeHead(301, {'location': '/home'});
                 res.end();
             })
