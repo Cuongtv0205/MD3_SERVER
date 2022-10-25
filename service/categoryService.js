@@ -18,7 +18,7 @@ class CategoryService {
     static findByIdCategory(id){
         let connection = Connection.getConnecting();
         return new Promise((resolve, reject)=>{
-            connection.query(`select * from category where id = '${id}'`,(err,category)=>{
+            connection.query(`select * from category where id = ${id}`,(err,category)=>{
                 if (err){
                     reject(err);
                 }else {

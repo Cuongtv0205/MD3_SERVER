@@ -20,7 +20,7 @@ class ProductService {
         let connection = Connection.getConnecting();
         return new Promise((resolve, reject) => {
             connection.query(`insert into product (name, price, description,idCategory)
-                              values ('${product.name}', ${product.price}, '${product.description}','${+product.idCategory}')`, (err, products) => {
+                              values ('${product.name}', ${product.price}, '${product.description}',${+product.idCategory})`, (err, products) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -46,6 +46,7 @@ class ProductService {
             });
         })
     }
+
     static editProduct(product,id) {
         let connection = Connection.getConnecting();
         return new Promise((resolve, reject) => {
@@ -54,6 +55,20 @@ class ProductService {
                     reject(err);
                 } else {
                     console.log('---Edit Success---')
+                    resolve(products);
+                }
+            });
+        })
+    }
+
+    static DeleteProduct(product,id) {
+        let connection = Connection.getConnecting();
+        return new Promise((resolve, reject) => {
+            connection.query(`delete from product WHERE id = '${id}';`, (err, products) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    console.log('---Delete Success---')
                     resolve(products);
                 }
             });

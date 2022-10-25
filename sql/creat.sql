@@ -13,3 +13,7 @@ name varchar(100) not null
 );
 alter table product add idCategory int not null ;
 alter table product add foreign key (idCategory) references category(id);
+
+use demo;
+Select * FROM product;
+SELECT * FROM category;
